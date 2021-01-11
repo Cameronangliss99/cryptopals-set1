@@ -106,32 +106,6 @@ def getAdvFit(st):
         if lt1.lower() + lt2.lower() in n_list or lt2.lower() + lt1.lower() in n_list:
             score -= 100
     return score
-
-def s_1_c_4():
-
-    c4 = open('s_1_c_4.txt', 'r')
-    c4 = c4.read()
-    c4 = c4.split()
-    ret_lst = []
-
-    # for i in c4:
-    #     ret_lst.append(i[:-1])
-
-    return c4
-
-def s_1_c_4_solution():
-
-    ret_lst = []
-    n = 2
-
-    for i in s_1_c_4():
-        # print(i)
-        k_str = k_decrypt(i, allKeys(n), n)
-        # print(k_str)
-        for j in k_str:
-            ret_lst.append(j)
-    
-    return ret_lst
         
 def h_dist(str1, str2):
     if len(str1) == len(str2):
@@ -143,25 +117,7 @@ def h_dist(str1, str2):
                 ret_count+= 1
         return ret_count
     else:
-        return 'Input strings not the same length'        
-
-def B642B2(iStr):
-    iStr = binascii.a2b_base64(iStr)
-    return bin(int.from_bytes(iStr, byteorder=sys.byteorder))[2:]
-
-def plain2bin(iStr):
-    byte_array = iStr.encode()
-
-    binary_int = int.from_bytes(byte_array, "big")
-    binary_string = bin(binary_int)
-
-    return binary_string[2:]
-
-def plain2hex(iStr):
-    return iStr.encode("latin-1").hex()
-
-def hex2plain(iStr):
-    return bytes.fromhex(iStr).decode('latin-1')
+        return 'Input strings not the same length'
 
 # SOLUTION FOR S_!_C_4
 def getKey(item):
