@@ -1,19 +1,6 @@
 import sys
 import convert
 import re
-
-def k_encrypt(hex_str, key_lst, n):
-
-    str_len = int(len(hex_str)//n)
-    ret_lst = []
-
-    for i in key_lst:
-        temp_key = ""
-        for j in range(str_len):
-            temp_key += i
-        ret_lst.append(b_xor(hex_str, temp_key))
-
-    return ret_lst
         
 def h_dist(str1, str2):
     if len(str1) == len(str2):
@@ -28,24 +15,12 @@ def h_dist(str1, str2):
         return 'Input strings not the same length'
 
 def main():
-
-    # print(B642B2('l0=='))
-
-    # tStr1 = plain2bin("this is a test")
-    # tStr2 = plain2bin("wokka wokka!!!")
-    # print(h_dist(tStr1, tStr2))
-
-    # tStr = 'Nikesh'
-    # print(plain2bin(tStr)[2:])
-    
-    # For Challenge 1
-    
-    hex_str = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
-    b64_str = convert.hex2Base64(hex_str)
-    if b64_str == "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t":
-        print("Success! Challenge 1 completed!")
-    else:
-        print("Keep trying...")
+  hex_str = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
+  b64_str = convert.hex2Base64(hex_str)
+  if b64_str == "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t":
+    print("Success! Challenge 1 completed!")
+  else:
+    print("Keep trying...")
 
 if __name__ == '__main__':
     main()
