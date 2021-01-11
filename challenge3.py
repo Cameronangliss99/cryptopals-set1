@@ -1,31 +1,25 @@
 import convert
 
-def reverse_b_xor(xord, st2):
-    
-  st2, xord = hexToB2(st2), hexToB2(xord)
-
-  if len(st2) != len(xord):
-      return 'Input lengths not equal'
-
-  st1 = ''
-
-  for x in range(len(st2)):
-    if st2[x] == '1' and xord[x] == '1':
-      st1 += '0'
-    elif st2[x] == '1' and xord[x] == '0':
-      st1 += '1'
-    elif st2[x] == '0' and xord[x] == '1':
-      st1 += '1'
-    elif st2[x] == '0' and xord[x] == '0':
-      st1 += '0'
-    else:
-      return 'Invalid inputs'
-  return B2ToHex(st1)
+def reverse_xor(xord, st2):
+    st2, xord = hexToB2(st2), hexToB2(xord)
+    if len(st2) != len(xord):
+        return 'Input lengths not equal'
+    st1 = ''
+    for x in range(len(st2)):
+        if st2[x] == '1' and xord[x] == '1':
+            st1 += '0'
+        elif st2[x] == '1' and xord[x] == '0':
+            st1 += '1'
+        elif st2[x] == '0' and xord[x] == '1':
+            st1 += '1'
+        elif st2[x] == '0' and xord[x] == '0':
+            st1 += '0'
+        else:
+            return 'Invalid inputs'
+    return B2ToHex(st1)
   
 def allKeys(n):
-
     hex_lst = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
-    
     if n == 1:
         return hex_lst
     else:
@@ -75,19 +69,14 @@ def getAdvFit(st):
     return score
 
 def main():
-  # For s_1_c_3
-  inSt1 = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
-  # Asserting answer
-  n = 0
-  for i in k_decrypt(inSt1, allKeys()):
-    if i == '436f6f6b696e67204d432773206c696b65206120706f756e64206f66206261636f6e':
-      print(i, allKeys()[n])
-    n+=1
-    #Answer for s_1_c_3 = '58'
-  if b_xor(inSt1, inSt2) == '746865206b696420646f6e277420706c6179':
-    print('s_1_c_2 is correct!')
-  else:
-    print('Uh-oh, s_1_c_2 is incorrect!')
+    # For s_1_c_3
+    inSt1 = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
+    # Asserting answer
+    n = 0
+    for i in k_decrypt(inSt1, allKeys()):
+        if i == '436f6f6b696e67204d432773206c696b65206120706f756e64206f66206261636f6e':
+            print(i, allKeys()[n])
+        n += 1
 
 if __name__ == '__main__':
   main()
