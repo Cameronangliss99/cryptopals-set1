@@ -64,20 +64,3 @@ if __name__ == '__main__':
 #     print('s_1_c_2 is correct!')
 # else:
 #     print('Uh-oh, s_1_c_2 is incorrect!')
-
-# # For s_1_c_3
-# inSt1 = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
-
-# # Asserting answer
-# n = 0
-# for i in k_decrypt(inSt1, allKeys()):
-#     if i == '436f6f6b696e67204d432773206c696b65206120706f756e64206f66206261636f6e':
-#         print(i, allKeys()[n])
-#     n+=1
-#     #Answer for s_1_c_3 = '58'
-# if b_xor(inSt1, inSt2) == '746865206b696420646f6e277420706c6179':
-#     print('s_1_c_2 is correct!')
-# else:
-#     print('Uh-oh, s_1_c_2 is incorrect!')
-# 436f6f6b696e67204d432773206c696b65206120706f756e64206f66206261636f6e
-
