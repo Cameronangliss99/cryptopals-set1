@@ -1,18 +1,6 @@
 import sys
 import convert
 import re
-        
-def h_dist(str1, str2):
-    if len(str1) == len(str2):
-        ret_count = 0
-        for k in range(len(str1)):
-            if str1[k] == str2[k]:
-                pass
-            else:
-                ret_count+= 1
-        return ret_count
-    else:
-        return 'Input strings not the same length'
 
 def main():
   hex_str = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
