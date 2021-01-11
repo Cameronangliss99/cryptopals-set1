@@ -2,29 +2,29 @@ import convert
 
 def s_1_c_4():
 
-    c4 = open('s_1_c_4.txt', 'r')
-    c4 = c4.read()
-    c4 = c4.split()
-    ret_lst = []
+  c4 = open('s_1_c_4.txt', 'r')
+  c4 = c4.read()
+  c4 = c4.split()
+  ret_lst = []
 
-    # for i in c4:
-    #     ret_lst.append(i[:-1])
+  # for i in c4:
+  #   ret_lst.append(i[:-1])
 
-    return c4
+  return c4
 
 def s_1_c_4_solution():
+  ret_lst = []
+  n = 2
+  for i in s_1_c_4():
+    # print(i)
+    k_str = k_decrypt(i, allKeys(n), n)
+    # print(k_str)
+    for j in k_str:
+      ret_lst.append(j)
+  return ret_lst
 
-    ret_lst = []
-    n = 2
-
-    for i in s_1_c_4():
-        # print(i)
-        k_str = k_decrypt(i, allKeys(n), n)
-        # print(k_str)
-        for j in k_str:
-            ret_lst.append(j)
-    
-    return ret_lst
+def getKey(item):
+    return item[0]
 
 def main:
   txt = open('sample_solution_s_1_c_4_decoded.txt', 'w', encoding = 'latin-1')
