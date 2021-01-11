@@ -2,24 +2,6 @@ import sys
 import convert
 import re
 
-def allKeys(n):
-
-    hex_lst = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
-    
-    if n == 1:
-        return hex_lst
-    else:
-        return allKeysr(n, n - 1, [], hex_lst, hex_lst)
-
-def allKeysr(n, c, new_lst, old_lst, hex_lst):
-    if c == 0:
-        return old_lst
-    else:
-        for i in range(len(old_lst)):
-            for j in range(len(hex_lst)):
-                new_lst.append(old_lst[i] + hex_lst[j])
-        return allKeysr(n, c-1, [], new_lst, hex_lst)
-
 def k_encrypt(hex_str, key_lst, n):
 
     str_len = int(len(hex_str)//n)
@@ -32,40 +14,6 @@ def k_encrypt(hex_str, key_lst, n):
         ret_lst.append(b_xor(hex_str, temp_key))
 
     return ret_lst
-
-def getBasicFit(st):
-    score = 0
-    for i in st:
-        letter = i.lower()
-        if letter in "zqxj":
-            score += 0
-        elif letter in 'kv':
-            score += 1
-        elif letter in 'bpygfwmuc':
-            score += 2
-        elif letter in 'ld':
-            score += 3
-        elif letter in 'rhsni':
-            score += 4
-        elif letter in 'oa':
-            score += 5
-        elif letter == 't':
-            score += 6
-        elif letter == 'e':
-            score += 8
-        else:
-            score += 0
-    return score
-
-def getAdvFit(st):
-    score = 0
-    n_list = ['bx', 'cj', 'cv', 'cx', 'dx', 'fq', 'fx', 'gq', 'gx', 'hx', 'jc', 'jf', 'jg', 'jq', 'js', 'jv', 'jw', 'jx', 'jz', 'kq', 'kx', 'mx', 'px', 'pz', 'qb', 'qc', 'qd', 'qf', 'qg', 'qh', 'qj', 'qk', 'ql', 'qm', 'qn', 'qp', 'qs', 'qt', 'qv', 'qw', 'qx', 'qy', 'qz', 'sx', 'vb', 'vf', 'vh', 'vj', 'vm', 'vp', 'vq', 'vt', 'vw', 'vx', 'wx', 'xj', 'xx', 'zj', 'zq', 'zx']
-    for i in range(len(st) - 1):
-        lt1 = st[i]
-        lt2 = st[i + 1]
-        if lt1.lower() + lt2.lower() in n_list or lt2.lower() + lt1.lower() in n_list:
-            score -= 100
-    return score
         
 def h_dist(str1, str2):
     if len(str1) == len(str2):
@@ -78,10 +26,6 @@ def h_dist(str1, str2):
         return ret_count
     else:
         return 'Input strings not the same length'
-
-# SOLUTION FOR S_!_C_4
-def getKey(item):
-    return item[0]
 
 def main():
 
