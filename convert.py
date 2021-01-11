@@ -66,61 +66,6 @@ def k_decrypt(hex_str, key_lst):
 
     return ret_lst
 
-def reverse_b_xor(xord, st2):
-
-    lengthst2 = len(st2)
-    lengthxord = len(xord)
-
-    # print(lengthst2, lengthxord)
-
-    st2, xord = hex2Bin(st2), hex2Bin(xord)
-    if len(st2) != 4*lengthst2:
-        diff = 4*lengthst2 - len(st2)
-        st2 = diff * '0' + st2
-    if len(xord) != 4*lengthxord:
-        diff = 4*lengthxord - len(xord)
-        xord = diff * '0' + xord
-    # print(len(xord), len(st2))
-    # print()
-
-    if len(st2) != len(xord):
-        return 'Input lengths not equal'
-
-    st1 = ''
-    
-    for x in range(len(st2)):
-        if st2[x] == '1' and xord[x] == '1':
-            st1 += '0'
-        elif st2[x] == '1' and xord[x] == '0':
-            st1 += '1'
-        elif st2[x] == '0' and xord[x] == '1':
-            st1 += '1'
-        elif st2[x] == '0' and xord[x] == '0':
-            st1 += '0'
-        else:
-            return 'Invalid inputs'
-    return bin2Hex(st1)
-
-#Key Generator
-def allKeys(n):
-
-    hex_lst = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
-    
-    if n == 1:
-        return hex_lst
-    else:
-        return allKeysr(n, n - 1, [], hex_lst, hex_lst)
-
-def allKeysr(n, c, new_lst, old_lst, hex_lst):
-    if c == 0:
-        return old_lst
-    else:
-        for i in range(len(old_lst)):
-            for j in range(len(hex_lst)):
-                new_lst.append(old_lst[i] + hex_lst[j])
-        return allKeysr(n, c-1, [], new_lst, hex_lst)
-
-
 def fltr(hex_str):
     # if hex_str == None:
     #     return
@@ -129,44 +74,6 @@ def fltr(hex_str):
         if i.lower() in "abcdefghijklmnopqrstuvwxyz !?,.;:_-'\"":
             temp += i
     return temp
-
-def getBasicFit(st):
-    # if st == None:
-    #     return 
-    score = 0
-    for i in st:
-        letter = i.lower()
-        if letter in "zqxj":
-            score += 0
-        elif letter in 'kv':
-            score += 1
-        elif letter in 'bpygfwmuc':
-            score += 2
-        elif letter in 'ld':
-            score += 3
-        elif letter in 'rhsni':
-            score += 4
-        elif letter in 'oa':
-            score += 5
-        elif letter == 't':
-            score += 6
-        elif letter == 'e':
-            score += 8
-        else:
-            score += 0
-    return score
-
-def getAdvFit(st):
-    # if st == None:
-    #     return
-    score = 0
-    n_list = ['bx', 'cj', 'cv', 'cx', 'dx', 'fq', 'fx', 'gq', 'gx', 'hx', 'jc', 'jf', 'jg', 'jq', 'js', 'jv', 'jw', 'jx', 'jz', 'kq', 'kx', 'mx', 'px', 'pz', 'qb', 'qc', 'qd', 'qf', 'qg', 'qh', 'qj', 'qk', 'ql', 'qm', 'qn', 'qp', 'qs', 'qt', 'qv', 'qw', 'qx', 'qy', 'qz', 'sx', 'vb', 'vf', 'vh', 'vj', 'vm', 'vp', 'vq', 'vt', 'vw', 'vx', 'wx', 'xj', 'xx', 'zj', 'zq', 'zx']
-    for i in range(len(st) - 1):
-        lt1 = st[i]
-        lt2 = st[i + 1]
-        if lt1.lower() + lt2.lower() in n_list or lt2.lower() + lt1.lower() in n_list:
-            score -= 100
-    return score
 
 def getKey(item):
     return item[0][0]
